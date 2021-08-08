@@ -17,6 +17,6 @@ For markdown files I suggest to enable `quickSuggestions` (disabled by default f
 ```json
 // Configure settings to be overridden for [markdown] language.
 "[markdown]":  {
-  "editor.quickSuggestions": false
+  "editor.quickSuggestions": true
 }
 ```
