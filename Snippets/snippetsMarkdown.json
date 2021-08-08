@@ -10,7 +10,7 @@
             "",
             "## [Unreleased]",
             "",
-            "* ${1:feature}",
+            "* $1",
             "",
             "## [${2:version}] - $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
             "\n"
@@ -28,33 +28,33 @@
             "",
             "## [Unreleased]",
             "",
-            "* ${1:feature}",
+            "* $1",
             "",
             "## [${2:version}] - $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
             "",
             "### Added",
             "",
-            "* ${3:feature}",
+            "* $3",
             "",
             "### Changed",
             "",
-            "* ${4:feature}",
+            "* $4",
             "",
             "### Fixed",
             "",
-            "* ${5:feature}",
+            "* $5",
             "",
             "### Deprecated",
             "",
-            "* ${6:feature}",
+            "* $6",
             "",
             "### Removed",
             "",
-            "* ${7:feature}",
+            "* $7",
             "",
             "### Security",
             "",
-            "* ${8:feature}"
+            "* $8"
         ],
         "description": "Initialize a full changelog"
     },
@@ -63,43 +63,44 @@
         "body": [
             "## [${1:version}] - $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
             "",
-            "$2"
+            "$2",
+            ""
         ],
         "description": "Add new version"
     },
     "Changelog Unreleased": {
         "prefix": "cl-Unreleased",
-        "body": ["## [Unreleased]", "", "* ${1:feature}"],
+        "body": ["## [Unreleased]", "", "* $1", ""],
         "description": "Changes planned but not yet released"
     },
     "Changelog Added": {
         "prefix": "cl-Added",
-        "body": ["### Added", "", "* {$1:feature}"],
+        "body": ["### Added", "", "* $1", ""],
         "description": "New Features"
     },
     "Changelog Changed": {
         "prefix": "cl-Changed",
-        "body": ["### Changed", "", "* {$1:feature}"],
+        "body": ["### Changed", "", "* $1", ""],
         "description": "Changes to existing functionality"
     },
     "Changelog Deprecated": {
         "prefix": "cl-Deprecated",
-        "body": ["### Deprecated", "", "* {$1:feature}"],
+        "body": ["### Deprecated", "", "* $1", ""],
         "description": "Soon-to-be removed features"
     },
     "Changelog Removed": {
         "prefix": "cl-Removed",
-        "body": ["### Removed", "", "* {$1:feature}"],
+        "body": ["### Removed", "", "* $1", ""],
         "description": "Now removed features"
     },
     "Changelog Fixed": {
         "prefix": "cl-Fixed",
-        "body": ["### Fixed", "", "* {$1:feature}"],
+        "body": ["### Fixed", "", "* $1", ""],
         "description": "Bug fixes"
     },
     "Changelog Security": {
         "prefix": "cl-Security",
-        "body": ["### Security", "", "* {$1:feature}"],
+        "body": ["### Security", "", "* $1", ""],
         "description": "In case of vulnerabilities"
     }
 }
