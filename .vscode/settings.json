@@ -28,5 +28,5 @@
         "titleBar.inactiveForeground": "#e7e7e799"
     },
     "peacock.color": "#7e5507",
-    "cSpell.words": ["keepachangelog"]
+    "cSpell.words": ["keepachangelog", "markdownlint"]
 }
