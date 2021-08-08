@@ -1,0 +1,60 @@
+{
+    "Changelog initialize": {
+        "prefix": "cl-Init",
+        "body": [
+            "# Changelog 📝",
+            "All notable changes to this project will be documented in this file.",
+            "The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).",
+            "\n",
+            "## [Unreleased]",
+            "* ${1:feature}",
+            "\n",
+            "## [${2:version}] - $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+            "\n"
+        ],
+        "description": "Initialize changelog"
+    },
+    "Changelog New Version": {
+        "prefix": "cl-NewVersion",
+        "body": [
+            "## [${1:version}] - $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE\n",
+            "* $2"
+        ],
+        "description": "Add new version"
+    },
+    "Changelog Unreleased": {
+        "prefix": "cl-Unreleased",
+        "body": ["## [Unreleased]", "* ${1:feature}"],
+        "description": "Changes planned but not yet released"
+    },
+    "Changelog Added": {
+        "prefix": "cl-Added",
+        "body": ["### Added", "* $1"],
+        "description": "New Features"
+    },
+    "Changelog Changed": {
+        "prefix": "cl-Changed",
+        "body": ["### Changed", "* $1"],
+        "description": "Changes to existing functionality"
+    },
+    "Changelog Deprecated": {
+        "prefix": "cl-Deprecated",
+        "body": ["### Deprecated", "* $1"],
+        "description": "Soon-to-be removed features"
+    },
+    "Changelog Removed": {
+        "prefix": "cl-Removed",
+        "body": ["### Removed", "* $1"],
+        "description": "Now removed features"
+    },
+    "Changelog Fixed": {
+        "prefix": "cl-Fixed",
+        "body": ["### Fixed", "* $1"],
+        "description": "Bug fixes"
+    },
+    "Changelog Security": {
+        "prefix": "cl-Security",
+        "body": ["### Security", "* $1"],
+        "description": "In case of vulnerabilities"
+    }
+}
