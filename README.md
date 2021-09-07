@@ -20,3 +20,10 @@ For markdown files I suggest to enable `quickSuggestions` (disabled by default f
   "editor.quickSuggestions": true
 }
 ```
+
+## Commands
+
+Initialize a new full changelog in the workspace or open folder root; if there is no folder open, prompt the user to ask for a folder where to store the new changelog file
+
+* `Initialize full markdown ChangeLog`
+* `Initialize full plaintext ChangeLog`

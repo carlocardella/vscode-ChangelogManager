@@ -7,8 +7,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-* Add new markdown changelog file and initialize it
-* Add new plain text changelog file and initialize it
+## [0.2.0] - @todo
+
+### Added
+
+Initialize a new full changelog in the workspace or open folder root; if there is no folder open, prompt the user to ask for a folder where to store the new changelog file
+* `Initialize full markdown ChangeLog`
+* `Initialize full plaintext ChangeLog`
 
 ## [0.1.2] - 2021-08-08
 

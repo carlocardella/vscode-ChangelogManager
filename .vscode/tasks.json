@@ -5,14 +5,18 @@
 	"tasks": [
 		{
 			"type": "npm",
-			"script": "watch",
-			"problemMatcher": [
-                "$ts-webpack-watch",
-                "$tslint-webpack-watch"
-			],
+			"script": "webpack-dev",
+			"runOptions": {
+				"runOn": "folderOpen"
+			},
 			"isBackground": true,
 			"presentation": {
-				"reveal": "never"
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": false
 			},
 			"group": {
 				"kind": "build",
@@ -21,13 +25,9 @@
 		},
 		{
 			"type": "npm",
-			"script": "test-watch",
+			"script": "unit-tests",
 			"problemMatcher": "$tsc-watch",
-			"isBackground": true,
-			"presentation": {
-				"reveal": "never"
-			},
-			"group": "build"
+			"isBackground": true
 		}
 	]
 }
