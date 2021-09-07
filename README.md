@@ -27,3 +27,8 @@ Initialize a new full changelog in the workspace or open folder root; if there i
 
 * `Initialize full markdown ChangeLog`
 * `Initialize full plaintext ChangeLog`
+
+Allow to select the folder where to create the changelog
+
+* `Initialize full markdown ChangeLog in folder...`
+* `Initialize full plaintext ChangeLog in folder...`
