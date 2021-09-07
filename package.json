@@ -60,13 +60,25 @@
                 "command": "vscode-changelogmanager.initPlainTextChangelog",
                 "title": "Initialize full plaintext ChangeLog",
                 "category": "Changelog Manager"
+            },
+            {
+                "command": "vscode-changelogmanager.askFolderMarkdownChangelog",
+                "title": "Initialize full markdown ChangeLog in folder...",
+                "category": "Changelog Manager"
+            },
+            {
+                "command": "vscode-changelogmanager.askFolderPlainTextChangelog",
+                "title": "Initialize full plaintext ChangeLog in folder...",
+                "category": "Changelog Manager"
             }
         ]
     },
     "main": "./dist/extension",
     "activationEvents": [
         "onCommand:vscode-changelogmanager.initMarkdownChangelog",
-        "onCommand:vscode-changelogmanager.initPlainTextChangelog"
+        "onCommand:vscode-changelogmanager.initPlainTextChangelog",
+        "onCommand:vscode-changelogmanager.askFolderMarkdownChangelog",
+        "onCommand:vscode-changelogmanager.askFolderPlainTextChangelog"
     ],
     "scripts": {
         "vscode:prepublish": "webpack --mode production",

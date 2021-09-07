@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
 import * as path from "path";
+import * as fs from "fs";
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -30,17 +31,45 @@ export function activate(context: vscode.ExtensionContext) {
             }
         )
     );
+    context.subscriptions.push(
+        vscode.commands.registerCommand(
+            "vscode-changelogmanager.askFolderMarkdownChangelog",
+            () => {
+                initMarkdownChangelog("markdown", true);
+            }
+        )
+    );
+    context.subscriptions.push(
+        vscode.commands.registerCommand(
+            "vscode-changelogmanager.askFolderPlainTextChangelog",
+            () => {
+                initMarkdownChangelog("plaintext", true);
+            }
+        )
+    );
 }
 
 // this method is called when your extension is deactivated
 export function deactivate() {}
 
-async function initMarkdownChangelog(languageId: string) {
-    let workspaceFolder: string | undefined =
-        vscode.workspace.workspaceFolders![0].uri.fsPath;
-    // no folder or workspace open, ask the user where to create the changelog file
-    if (!workspaceFolder) {
+/**
+ * Create the changelog file
+ *
+ * @param {string} languageId The language id of the file
+ * @param {boolean} [askFolder] If true, ask the user for the folder where to create the changelog file
+ * @return {*} 
+ */
+async function initMarkdownChangelog(languageId: string, askFolder?: boolean) {
+    let workspaceFolder: string | undefined;
+
+    if (askFolder) {
         workspaceFolder = await askForFolder();
+    } else {
+        workspaceFolder = vscode.workspace.workspaceFolders![0].uri.fsPath;
+        // no folder or workspace open, ask the user where to create the changelog file
+        if (!workspaceFolder) {
+            workspaceFolder = await askForFolder();
+        }
     }
     if (!workspaceFolder) {
         return;
@@ -50,7 +79,8 @@ async function initMarkdownChangelog(languageId: string) {
         languageId === "markdown" ? "CHANGELOG.md" : "CHANGELOG.txt";
     let uri = vscode.Uri.file(path.join(workspaceFolder, changelogFileName));
 
-    if (!(await checkIfChangelogExists(uri))) {
+    let fileExists = checkIfChangelogExists(uri);
+    if (!fileExists) {
         vscode.workspace.fs.writeFile(uri, new Uint8Array()).then((_) => {
             vscode.workspace.openTextDocument(uri).then((doc) => {
                 vscode.window.showTextDocument(doc).then(() => {
@@ -71,6 +101,11 @@ async function initMarkdownChangelog(languageId: string) {
     }
 }
 
+/**
+ * Ask the user for the folder where to create the changelog file
+ *
+ * @return {*}  {(Promise<string | undefined>)}
+ */
 async function askForFolder(): Promise<string | undefined> {
     const folderPath = await vscode.window.showOpenDialog({
         canSelectFiles: false,
@@ -86,12 +121,12 @@ async function askForFolder(): Promise<string | undefined> {
     }
 }
 
-function checkIfChangelogExists(uri: vscode.Uri) {
-    return vscode.workspace.fs.stat(uri).then((stat) => {
-        if (stat.type === vscode.FileType.File) {
-            return true;
-        } else {
-            return false;
-        }
-    });
+/**
+ * Check if the changelog file exists
+ *
+ * @param {vscode.Uri} uri The uri of the changelog file
+ * @return {*}  {boolean}
+ */
+function checkIfChangelogExists(uri: vscode.Uri): boolean {
+    return fs.existsSync(uri.fsPath);
 }
