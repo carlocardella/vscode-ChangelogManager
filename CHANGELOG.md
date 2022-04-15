@@ -10,6 +10,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 * Allow to override an existing changelog
   * based on settings
   * ask the user
+## [0.3.1] - 2022-04-15
+
+### Changed
+
+* Update Node.js modules
 
 ## [0.3.0] - 2021-09-06
 

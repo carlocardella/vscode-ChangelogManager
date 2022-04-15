@@ -25,7 +25,10 @@
         "titleBar.activeBackground": "#7e5507",
         "titleBar.activeForeground": "#e7e7e7",
         "titleBar.inactiveBackground": "#7e550799",
-        "titleBar.inactiveForeground": "#e7e7e799"
+        "titleBar.inactiveForeground": "#e7e7e799",
+        "sash.hoverBorder": "#ae760a",
+        "statusBarItem.remoteBackground": "#7e5507",
+        "statusBarItem.remoteForeground": "#e7e7e7"
     },
     "peacock.color": "#7e5507",
     "cSpell.words": ["changelogmanager", "keepachangelog", "markdownlint"]
