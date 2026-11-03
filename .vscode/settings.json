@@ -12,7 +12,7 @@
     "typescript.tsc.autoDetect": "off",
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#ae760a",
-        "activityBar.activeBorder": "#055a3d",
+        "activityBar.activeBorder": "#e7e7e7",
         "activityBar.background": "#ae760a",
         "activityBar.foreground": "#e7e7e7",
         "activityBar.inactiveForeground": "#e7e7e799",
@@ -27,9 +27,18 @@
         "titleBar.inactiveBackground": "#7e550799",
         "titleBar.inactiveForeground": "#e7e7e799",
         "sash.hoverBorder": "#ae760a",
-        "statusBarItem.remoteBackground": "#7e5507",
+        "statusBarItem.remoteBackground": "#0ab57a",
         "statusBarItem.remoteForeground": "#e7e7e7",
-        "commandCenter.border": "#e7e7e799"
+        "commandCenter.border": "#e7e7e799",
+        "activityBarTop.activeBackground": "#ae760a",
+        "activityBarTop.activeBorder": "#e7e7e7",
+        "activityBarTop.background": "#ae760a",
+        "activityBarTop.foreground": "#e7e7e7",
+        "activityBarTop.inactiveForeground": "#e7e7e799",
+        "commandCenter.foreground": "#e7e7e7",
+        "statusBar.debuggingBackground": "#7e5507",
+        "statusBar.debuggingForeground": "#e7e7e7",
+        "statusBar.inactiveBackground": "#7e5507"
     },
     "peacock.color": "#7e5507",
     "cSpell.words": [
