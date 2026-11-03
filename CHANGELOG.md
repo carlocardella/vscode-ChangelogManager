@@ -10,6 +10,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 * Allow to override an existing changelog
   * based on settings
   * ask the user
+
+## [0.3.2] - 2026-11-03
+
+### Changed
+
+* Update npm dependencies and require Visual Studio Code 1.140 or newer.
+* Modernize the development toolchain for Node.js 24 and add extension integration tests.
+
+### Fixed
+
+* Wait for changelog creation and snippet insertion before completing commands.
+* Handle folder-dialog cancellation and workspaces with no open folder.
+
+### Security
+
+* Resolve all reported npm vulnerabilities, including transitive glob and minimatch issues.
+
 ## [0.3.1] - 2022-04-15
 
 ### Changed

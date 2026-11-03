@@ -12,6 +12,8 @@
 
 This [Visual Studio Code](https://code.visualstudio.com/) extension helps to build a changelog for your project, either in markdown or plain text files. The changelog format follows [Keep a changelog](https://keepachangelog.com/).
 
+Requires Visual Studio Code 1.140 or newer.
+
 For markdown files I suggest to enable `quickSuggestions` (disabled by default for markdown files):
 
 ```json
@@ -32,3 +34,24 @@ Allow to select the folder where to create the changelog
 
 * `Initialize full markdown ChangeLog in folder...`
 * `Initialize full plaintext ChangeLog in folder...`
+
+## Development
+
+Use Node.js 24 LTS (`nvm use`) and npm. The development toolchain requires a
+supported Node.js release; Node.js 16 and 23 are not supported.
+
+```sh
+npm ci
+npm audit
+npm run lint
+npm test
+```
+
+`npm test` builds the production extension, compiles the tests, and runs them in
+a downloaded VS Code instance with an isolated temporary workspace. On headless
+Linux, run `xvfb-run -a npm test`. `npm run webpack-dev` watches the extension
+bundle; `npm run unit-tests` watches test compilation for the VS Code debugger.
+
+TypeScript stays on the latest compatible 6.x release while typescript-eslint
+requires TypeScript below 6.1. Dependency overrides keep transitive `glob` and
+`minimatch` on patched releases until their consumers update their requirements.

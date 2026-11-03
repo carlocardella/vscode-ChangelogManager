@@ -19,7 +19,7 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.commands.registerCommand(
             "vscode-changelogmanager.initMarkdownChangelog",
             () => {
-                initMarkdownChangelog("markdown");
+                return initMarkdownChangelog("markdown");
             }
         )
     );
@@ -27,7 +27,7 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.commands.registerCommand(
             "vscode-changelogmanager.initPlainTextChangelog",
             () => {
-                initMarkdownChangelog("plaintext");
+                return initMarkdownChangelog("plaintext");
             }
         )
     );
@@ -35,7 +35,7 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.commands.registerCommand(
             "vscode-changelogmanager.askFolderMarkdownChangelog",
             () => {
-                initMarkdownChangelog("markdown", true);
+                return initMarkdownChangelog("markdown", true);
             }
         )
     );
@@ -43,7 +43,7 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.commands.registerCommand(
             "vscode-changelogmanager.askFolderPlainTextChangelog",
             () => {
-                initMarkdownChangelog("plaintext", true);
+                return initMarkdownChangelog("plaintext", true);
             }
         )
     );
@@ -65,7 +65,7 @@ async function initMarkdownChangelog(languageId: string, askFolder?: boolean) {
     if (askFolder) {
         workspaceFolder = await askForFolder();
     } else {
-        workspaceFolder = vscode.workspace.workspaceFolders![0].uri.fsPath;
+        workspaceFolder = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
         // no folder or workspace open, ask the user where to create the changelog file
         if (!workspaceFolder) {
             workspaceFolder = await askForFolder();
@@ -81,18 +81,12 @@ async function initMarkdownChangelog(languageId: string, askFolder?: boolean) {
 
     let fileExists = checkIfChangelogExists(uri);
     if (!fileExists) {
-        vscode.workspace.fs.writeFile(uri, new Uint8Array()).then((_) => {
-            vscode.workspace.openTextDocument(uri).then((doc) => {
-                vscode.window.showTextDocument(doc).then(() => {
-                    vscode.commands.executeCommand(
-                        "editor.action.insertSnippet",
-                        {
-                            langId: languageId,
-                            name: "Changelog Initialize Full",
-                        }
-                    );
-                });
-            });
+        await vscode.workspace.fs.writeFile(uri, new Uint8Array());
+        const doc = await vscode.workspace.openTextDocument(uri);
+        await vscode.window.showTextDocument(doc);
+        await vscode.commands.executeCommand("editor.action.insertSnippet", {
+            langId: languageId,
+            name: "Changelog Initialize Full",
         });
     } else {
         vscode.window.showErrorMessage(
@@ -114,11 +108,7 @@ async function askForFolder(): Promise<string | undefined> {
         title: "Select a folder to initialize a changelog",
     });
 
-    if (folderPath) {
-        return Promise.resolve(folderPath[0].fsPath);
-    } else {
-        return Promise.reject();
-    }
+    return folderPath?.[0]?.fsPath;
 }
 
 /**

@@ -1,5 +1,10 @@
 on:
   workflow_dispatch:
+    inputs:
+      publishOpenVSX:
+        description: Also publish to Open VSX
+        type: boolean
+        default: false
   push:
     tags:
       - "*"
@@ -10,16 +15,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 24
       - run: npm ci
+      - run: npm audit
+      - run: npm run lint
+      - run: xvfb-run -a npm test
       - name: Publish to Open VSX Registry
+        if: github.event_name == 'workflow_dispatch' && inputs.publishOpenVSX
         uses: HaaLeo/publish-vscode-extension@v1
         with:
           pat: ${{ secrets.OPENVSX_PAT }}
+          skipDuplicate: true
       - name: Publish to Visual Studio Marketplace
         uses: HaaLeo/publish-vscode-extension@v1
         with:
           pat: ${{ secrets.VSCE_PAT }}
           registryUrl: https://marketplace.visualstudio.com
+          skipDuplicate: true
